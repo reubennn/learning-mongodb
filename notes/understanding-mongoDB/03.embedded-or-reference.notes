@@ -1,0 +1,15 @@
+* // ---------- Embedded Data vs. Include by Reference? ---------- // *
+# Embedded Data
+- Easier to work with.
+- Minimises coding operations.
+- Easier to query and indexing.
+- Simple structure.
+- All information in one place.
+- More data
+    - Repeated data across Documents
+    - Doesn't update automatically
+
+# Include by Reference
+- More operations for inserting and access.
+- Aggregating data can be complex.
+- Enables consistent data.

@@ -1,0 +1,12 @@
+* // ---------- Designed for Developers ---------- // *
+- JSON representation.
+- Javascript shell commands.
+- Excellent drivers.
+- Used by companies with extensive data needs.
+
+* // ---------- MongoDB Document Structure ---------- // *
+- Documents = JSON objects.
+- Store data as BSON (Binary JSON).
+- Easy to access related information.
+- flexible indexing capability.
+- Easy to datapt to common coding practises.

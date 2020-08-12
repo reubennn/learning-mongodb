@@ -1,0 +1,23 @@
+# Databases
+
+* // ---------- Relational Databases ---------- // *
+- Gold standard for decades.
+- All size companies and organizations.
+- Use a common query language - SQL.
+- Table organization for discrete data.
+- Keys used to tie items together and construct data.
+
+# Schema Design
+- Table design is complex.
+- Requires trained database administrators.
+- Updates require wholesale operations.
+- Complex queries to join related data.
+
+* // ---------- Relational vs. NoSQL ---------- // *
+# Relational
+- Powerful, flexible, constrained.
+- Designed for database administrators.
+
+# NoSQL
+- Document model more closely matches code objects.
+- Designed for developers.

@@ -1,0 +1,25 @@
+* // ---------- Indexing ---------- // *
+- Indexing provides performance improvements
+- Ad hoc queries are expensive
+- Large datasets can lose performance
+- Indices are even useful for very simple data
+
+# Indexing Features
+- 64 indices per collection
+- Single field is most simple
+- Compound
+    - Single index which uses multiple fields to create the lookup table.
+- Unique (uniqueness rules)
+    - e.g. Restrict usernames so there are no duplicates
+
+* // ---------- Sharding ---------- // *
+- Partitions data onto different machines
+- Provides scalability via software
+- Autosharding supported by Mongo
+- Challenging to set up
+
+* // ---------- Replication ---------- // *
+- Reliability
+- Maximises uptime
+- Replica sets
+- Automatic failover
