@@ -2,26 +2,26 @@
 ! Create, Read, Update, Delete !
 
 * // ---------- Create ---------- // *
-# Insert a new object in a collection
-`db.<collection>.insert({Object})`
+# Insert a new document in a collection
+`db.<collection>.insert({document})`
 
 * // ---------- Read ---------- // *
-# Find an object in a collection
-`db.<collection>.find({Object})`
+# Find an document in a collection
+`db.<collection>.find({document})`
 
 # Find operator: lte (less than or equal to)
 `db.tours.find( {"tourPrice":{$lte:500}, "tourLength":{$lte:3}})`
 
 * // ---------- Update ---------- // *
 # Add a property value set
-`db.tours.update({{Object to find>}, {$set: {"property":"value"}})`
+`db.tours.update({{document to find>}, {$set: {"property":"value"}})`
 
 # Add a property value to an existing set
-`db.tours.update({<Object to find>}, { $addToSet: {"property":"value"} })`
+`db.tours.update({<document to find>}, { $addToSet: {"property":"value"} })`
 
 * // ---------- Remove ---------- // *
-# Remove an object from a collection
-`db.<collection.remove({Object})`
+# Remove an document from a collection
+`db.<collection.remove({document})`
 
 # Delete a collection
 `db.<collection>.drop()`
