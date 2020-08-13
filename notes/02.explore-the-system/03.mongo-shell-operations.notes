@@ -13,11 +13,11 @@
 `db.tours.find( {"tourPrice":{$lte:500}, "tourLength":{$lte:3}})`
 
 * // ---------- Update ---------- // *
-# Add a property value set
-`db.tours.update({{document to find>}, {$set: {"property":"value"}})`
+# Add a field value set
+`db.tours.update({{document to find>}, {$set: {"field":"value"}})`
 
-# Add a property value to an existing set
-`db.tours.update({<document to find>}, { $addToSet: {"property":"value"} })`
+# Add a field value to an existing set
+`db.tours.update({<document to find>}, { $addToSet: {"field":"value"} })`
 
 * // ---------- Remove ---------- // *
 # Remove an document from a collection

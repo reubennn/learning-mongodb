@@ -15,7 +15,7 @@ You can check which database you are current in by typing `db`
 `show dbs`
 
 # Insert document
-`db.<collection>.insert({"property":"value"})`
+`db.<collection>.insert({"field":"value"})`
 
 # Show all collections
 `show collections`
@@ -32,10 +32,10 @@ You can check which database you are current in by typing `db`
 `db.<collection>.count()`
 
 # Find a particular document
-`db.<collection>.find({"property":"value"})`
+`db.<collection>.find({"field":"value"})`
 
 # Get information on a functions
-`db.<collection>.find({"property":"value"}).explain("executionStats")`
+`db.<collection>.find({"field":"value"}).explain("executionStats")`
 
 # Create an index
 `db.<collection>.createIndex({<variable>:<value>})`
