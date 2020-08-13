@@ -1,0 +1,42 @@
+* // ---------- Starting the Mongo Shell ---------- // *
+1. Located mongod and mongo applications (Somewhere similar to C:\Program Files\MongoDB\Server\4.4\bin)
+2. In cmd, run `mongod`
+3. Open up another cmd, type `mongo`
+
+* // ---------- Basic commands ---------- // *
+# Check the current database
+You can check which database you are current in by typing `db`
+
+# Change databases or create a new database
+// Note: new database is only created after the first document is inserted
+`use <database-name>`
+
+# Show all databases
+`show dbs`
+
+# Insert document
+`db.<collection>.insert({"property":"value"})`
+
+# Show all collections
+`show collections`
+
+# JavaScript
+- Within the MongoDB shell, we can use Native JavaScript with the MongoDB interaction functions
+    - Allows for flexibility and power when working in the shell
+    - We can use functions and variables
+    - Or perform loops to create data
+- We can perform complex commands by entering them on multiple lines using `Shift + Enter`
+
+* // ---------- Collections ---------- // *
+# Count the number of items in a collection
+`db.<collection>.count()`
+
+# Find a particular item
+`db.<collection>.find({"property":"value"})`
+
+# Get information on a functions
+`db.<collection>.find({"property":"value"}).explain("executionStats")`
+
+# Create an index
+`db.<collection>.createIndex({<variable>:<value>})`
+// Note the first value in the object is a special variable and we don't have to pass it as a string

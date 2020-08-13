@@ -1,0 +1,9 @@
+* // ---------- mongoimport Tool ---------- // *
+# Help
+`mongoimport --help`
+
+# Importing JSON data into Mongo database
+`mongoimport --db <db> --collection <collection> --jsonArray --file <file>`
+
+# Example import using demo data
+`mongoimport --db learning_mongo --collection tours --jsonArray --file tours.json`

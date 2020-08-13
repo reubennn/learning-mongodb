@@ -1,0 +1,11 @@
+* // ---------- Indexing ---------- // *
+
+# Get information on a query
+`db.<collection>.find({<object>}).explain("executionStats")`
+
+# Create an index
+`db.<collection>.createIndex({<key and index type specification>:<options})`
+// Do not use quotes for the key and index type specification
+
+# Create compound index example
+`db.tours.createIndex({tourPrice:1, tourLength:1})`
