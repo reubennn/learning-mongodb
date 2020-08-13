@@ -1,23 +1,27 @@
 * // ---------- REST API CRUD Operations ---------- // *
 ! Create, Read, Update, Delete !
 
+* // ---------- Create ---------- // *
 # Insert a new object in a collection
 `db.<collection>.insert({Object})`
 
+* // ---------- Read ---------- // *
 # Find an object in a collection
 `db.<collection>.find({Object})`
 
 # Find operator: lte (less than or equal to)
 `db.tours.find( {"tourPrice":{$lte:500}, "tourLength":{$lte:3}})`
 
-# Remove an object from a collection
-`db.<collection.remove({Object})`
-
+* // ---------- Update ---------- // *
 # Add a property value set
 `db.tours.update({{Object to find>}, {$set: {"property":"value"}})`
 
 # Add a property value to an existing set
 `db.tours.update({<Object to find>}, { $addToSet: {"property":"value"} })`
+
+* // ---------- Remove ---------- // *
+# Remove an object from a collection
+`db.<collection.remove({Object})`
 
 # Delete a collection
 `db.<collection>.drop()`
