@@ -21,7 +21,7 @@
 
 * // ---------- Remove ---------- // *
 # Remove an document from a collection
-`db.<collection.remove({document})`
+`db.<collection>.remove({document})`
 
 # Delete a collection
 `db.<collection>.drop()`

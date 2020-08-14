@@ -8,7 +8,6 @@ const HOST = "localhost";
 
 let collection;
 
-
 const init = async () => {
     MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
         if (err) {
@@ -46,7 +45,14 @@ const init = async () => {
             method: "POST",
             path: "/api/tours",
             handler: function (request, h) {
-                return ("Adding new tour");
+                console.log("POST request on /api/tours. Received:");
+                console.log(request.payload);
+                // Insert document ONLY if the document does not already exist
+                return collection.updateOne(
+                    request.payload,
+                    { $setOnInsert: request.payload }, // Has no effect if the query does not insert
+                    { upsert: true } // Creates the document when no document matches the query
+                );
             }
         },
         // Get a single tour
@@ -54,7 +60,9 @@ const init = async () => {
             method: "GET",
             path: "/api/tours/{name}",
             handler: function (request, h) {
-                return collection.findOne({ "tourName": request.params.name });
+                return collection.findOne(
+                    { "tourName": request.params.name }
+                );
             } // e.g. localhost:3000/api/tours/Big Sur Retreat
         },
         // Update a single tour
@@ -62,8 +70,25 @@ const init = async () => {
             method: "PUT",
             path: "/api/tours/{name}",
             handler: function (request, h) {
-                // request.payload variables
-                return ("Updating " + request.params.name);
+                // Replace the document with the new query key-value pairs
+                if (request.query.replace == "true") { // Query parameter: replace = "true"
+                    console.log(`PUT request on /api/tours/${request.params.name}. Replacing document with key values pairs:`);
+                    console.log(request.payload);
+                    request.payload.tourName = request.params.name;
+                    return collection.replaceOne(
+                        { "tourName": request.params.name },
+                        request.payload
+                    );
+                } else {
+                    // Append the query key-value pair onto the document
+                    console.log(`PUT request on /api/tours/${request.params.name}. Updating document with key values:`);
+                    console.log(request.payload);
+                    // Insert document ONLY if the document does not already exist
+                    return collection.updateOne(
+                        { tourName: request.params.name },
+                        { $set: request.payload }
+                    );
+                }
             }
         },
         // Delete a single tour
@@ -71,7 +96,13 @@ const init = async () => {
             method: "DELETE",
             path: "/api/tours/{name}",
             handler: function (request, h) {
-                return ("Deleting " + request.params.name).code(204);
+                return collection.deleteOne(
+                    { tourName: request.params.name },
+                )
+                    // As Node.js is asynchronous, we need to provide a Promise, which executes AFTER collection.deleteOne()
+                    .then(mongoStatus => {
+                        return h.response(mongoStatus).code(200); // Send response and status code
+                    });
             }
         },
         // Home page
@@ -79,7 +110,7 @@ const init = async () => {
             method: "GET",
             path: "/",
             handler: function (request, h) {
-                return ("Hello world from Hapi/Mongo example.")
+                return ("Hello, World! - from Hapi/Mongo example.")
             }
         }
     ]);
