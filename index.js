@@ -26,7 +26,22 @@ const init = async () => {
     });
 
     server.route([
-        // Get tour list
+        /*
+        ** Delete a single tour
+        ** HTTP request: http://localhost:3000/
+        */
+        {
+            method: "GET",
+            path: "/",
+            handler: function (request, h) {
+                return ("Hello, World! - from Hapi/Mongo example.")
+            }
+        },
+
+        /*
+        ** Get tour list
+        ** HTTP request example: http://localhost:3000/api/tours?tourPackage=Backpack Cal
+        */
         {
             method: "GET",
             path: "/api/tours",
@@ -36,11 +51,21 @@ const init = async () => {
                 // If user enters key value set, find it
                 for (let key in request.query) {
                     findObject[key] = request.query[key];
-                } //e.g. localhost:3000/api/tours?tourPackage=Backpack Cal
+                }
                 return collection.find(findObject).toArray();
             }
         },
-        // Add new tour
+
+        /*
+        ** Add new tour
+        ** HTTP request example: http://localhost:3000/api/tours
+        **                          Body(raw): {
+        **                                "tourName":"Reuben's Awesome Tour",
+        **                                "tourPackage":"Fun in the sun",
+        **                                "tourPrice":10000,
+        **                                "tourLength":5
+        **                            }
+        */
         {
             method: "POST",
             path: "/api/tours",
@@ -55,7 +80,11 @@ const init = async () => {
                 );
             }
         },
-        // Get a single tour
+
+        /*
+        ** Get a single tour
+        ** HTTP request example: http://localhost:3000/api/tours/Big Sur Retreat
+        */
         {
             method: "GET",
             path: "/api/tours/{name}",
@@ -63,9 +92,20 @@ const init = async () => {
                 return collection.findOne(
                     { "tourName": request.params.name }
                 );
-            } // e.g. localhost:3000/api/tours/Big Sur Retreat
+            }
         },
-        // Update a single tour
+
+        /*
+        ** Update a single tour
+        ** HTTP request example: http://localhost:3000/api/tours/Reuben's Awesome Tour
+        **                          Body(raw): {
+        **                              "tourBlurb": "Get your tan on"
+        **                          }
+        ** HTTP request example with replace: http://localhost:3000/api/tours/Reuben's Awesome Tour?replace=true
+        **                          Body(raw): {
+        **                              "tourBlurb": "Get your tan on"
+        **                          }
+        */
         {
             method: "PUT",
             path: "/api/tours/{name}",
@@ -91,7 +131,11 @@ const init = async () => {
                 }
             }
         },
-        // Delete a single tour
+
+        /*
+        ** Delete a single tour
+        ** HTTP request example: http://localhost:3000/api/tours/Reuben's Awesome Tour
+        */
         {
             method: "DELETE",
             path: "/api/tours/{name}",
@@ -103,14 +147,6 @@ const init = async () => {
                     .then(mongoStatus => {
                         return h.response(mongoStatus).code(200); // Send response and status code
                     });
-            }
-        },
-        // Home page
-        {
-            method: "GET",
-            path: "/",
-            handler: function (request, h) {
-                return ("Hello, World! - from Hapi/Mongo example.")
             }
         }
     ]);
