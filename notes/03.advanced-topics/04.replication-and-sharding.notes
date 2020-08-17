@@ -1,0 +1,43 @@
+* // ---------- Replication ---------- // *
+- Full copies of the dataset
+- Primary and secondary servers
+- Automatic failover
+
+# Benefits
+- Uptime and failover
+- Replica set vs. master-slave
+- Automatic failover
+- Backup from a secondary server
+- Extensive write operations
+- More database reads
+
+How does replication work?:
+- By creating a replica set
+- The server elects a primary node
+- If the primary node goes down, a new primary node is elected
+- When the old primary comes up, it's brought in as a secondary node
+
+* // ---------- Sharding ---------- // *
+- Partition data onto multiple servers
+- Server farm friendly
+- Scalability and performance
+
+# Benefits
+- Partition your database
+- More storage and greater capacity
+- Multiple CPUs and memory
+- Operates as asingle database for clients
+- Minor performance hit
+
+When to implement sharding?:
+- Storage limitations
+- Memory constraints
+- Load issues
+- When cost is prohibitive for a single server
+
+* // ---------- Data Storage ---------- // *
+- Monitor the size of /data/db
+- db.collection.stats() and db.stats()
+- Best to monitor to avoid unexpected failure
+    - Implement sharding before database is overloaded as some overhead is required
+    -- This is to populate the shards and redirect the traffic

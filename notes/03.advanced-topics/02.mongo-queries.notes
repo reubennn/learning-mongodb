@@ -1,0 +1,33 @@
+* // ---------- Tuning Mongo Queries ---------- // *
+
+# Show only the <key> and _id from the queried documents
+`db.tours.find({}, {<key>:1})`
+
+# Show only the <key> and not the _id field from the queried documents
+`db.tours.find({}, {<key>:1, _id:0})`
+
+# Show more results after a query
+`it`
+// If Mongo-Hacker is not installed, the end of the search query will say `Type "it" for more`
+// If Mongo-Hacker is installed, the end of the search query will have `-- More[true]`
+
+# Make the output more readable (If Mongo-Hacker is not installed)
+Simply add `.pretty()` to the end of the query
+
+# Sort the queried documents
+Add `.sort({<key>:<direction>})` to the end of the query
+// <direction>: 1 for ascending, -1 for descending
+
+# Limit the number of queried documents
+Add `.limit(<number>)` to the end of the query
+// <number> = number of queried documents to limit in the query
+
+# Paging
+Add `.skip(<number>)` to the end of the query
+// Call the cursor.skip() method on a cursor to control where MongoDB begins returning results.
+// This approach may be useful in implementing paginated results. (Show 5 results per page)
+
+# Query operators matching a range of values
+`db.<collection>.find({<key>:{$lte:1000, $gte:800}})`
+// lte = less than or equal to
+// gte = greater than or equal to

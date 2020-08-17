@@ -1,0 +1,6 @@
+* // ---------- Unique Indexes ---------- // *
+
+# Create a unique index so that duplicates are not found in <key>
+`db.tours.createIndex({<key>:1},{unique:true})`
+// :1 = ascending index on a field
+// :-1 =  descending index on a field

@@ -1,0 +1,22 @@
+* // ---------- Text Indexes ---------- // *
+
+# Create a text index
+`db.tours.createIndex({<field>:"text"})`
+
+# Create a text index for multiple fields
+`db.tours.createIndex({<field>:"text", <field>:"text"})`
+
+# Search for a query with the text index
+`db.tours.find({$text:{$search:"<query>"}})`
+
+# Sort the text index query sorted by relevence
+db.tours.find(
+    {$text:{$search:"<query>"}},
+    {score:{$meta:"textScore"}}
+).sort({score:{$meta:"textScore"}})
+
+# Regular expression
+`db.tours.find({<field>:{$regex:/<query>/i}})`
+// /i makes it case insensitive
+# Shortcut method (same as above)
+`db.tours.find({<field>:/<query>/i})`
