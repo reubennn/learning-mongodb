@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/reubennn/learning-mongodb#readme",
   "dependencies": {
-    "@hapi/hapi": "^20.0.0",
+    "@hapi/hapi": "^20.2.1",
     "hapi": "^18.1.0",
     "mongodb": "^3.6.0",
     "nodemon": "^2.0.4"
